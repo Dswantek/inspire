@@ -9,6 +9,6 @@ function ImageService() {
 			res = JSON.parse(res)
 			console.log('Image Data:', res)
 			callWhenDone(res)
-		})
+		});
 	}
 }

@@ -14,20 +14,38 @@ function TodoController() {
 		todoService.getTodos(draw)
 	}
 
-	function draw(todos) {
+	function draw(todoList) {
+		debugger
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
 		var template = ''
 		//DONT FORGET TO LOOP
+		for(var i = 0; i < todoList.length; i++){
+			var myTodo = todoList[i]
+			template += `
+			<div class="checkbox">
+				<label><input type="checkbox" value="">${myTodo.description}</label>
+			</div>
+			`
+		}
+		document.getElementById('todo').innerHTML = template
 	}
+
+	var todosFormElem = document.getElementById('add-todo-form')
+	var todoShowButton = document.getElementById('todo-show-button')
 
 	this.addTodoFromForm = function (e) {
 		e.preventDefault() // <-- hey this time its a freebie don't forget this
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target
 		var todo = {
+			description: form.todo.value
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
 		}
+		
+		todosFormElem.classList.toggle('hidden', true)
+
+		showAddTodoForm()
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
@@ -36,18 +54,38 @@ function TodoController() {
 		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
-	this.toggleTodoStatus = function (todoId) {
+	this.toggleTodoStatus = function (todo) {
 		// asks the service to edit the todo status
-		todoService.toggleTodoStatus(todoId, getTodos)
+		todoService.toggleTodoStatus(todo, getTodos)
 		// YEP THATS IT FOR ME
 	}
 
-	this.removeTodo = function (todoId) {
+	this.removeTodo = function (todo) {
 		// ask the service to run the remove todo with this id
-
+		todoService.removeTodo(todo, getTodos)
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
 	}
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+
+	var formstate = false
+
+	this.showAddTodoForm = function showAddTodoForm() {
+        if (formstate) {
+            todoShowButton.innerText = 'Add'
+            todoShowButton.className = 'btn btn-info'
+            todosFormElem.classList.add('hidden')
+            formstate = false
+        } else {
+            todoShowButton.innerText = 'Cancel'
+            todoShowButton.className = 'btn btn-danger'
+            todosFormElem.classList.remove('hidden')
+            formstate = true
+        }
+    }
+
+
+	draw()
+
 
 }

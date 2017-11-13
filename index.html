@@ -1,23 +1,93 @@
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<title>Inspire</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Dan's Inspire</title>
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+
 </head>
 
-<body id="body">
-	<div id="weather">
-		Your Weather Template
+<body id="body" class="container-fluid">
+	<div class="row text-center">
+		<div class="col-xs-10">
+			WELCOME BACK DANIEL
+		</div>
+		<div id="weather">
+			<!-- <div class="col-xs-2">
+				<div class="row">
+					<div class="col-xs-12">
+						<p>Temp in F</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<p>Low Temp</p>
+					</div>
+					<div class="col-xs-6">
+						<p>High Temp</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<p>City</p>
+					</div>
+					<div class="col-xs-6">
+						<p>Picture of Weather (clouds, sunny, rain, etc)</p>
+					</div>
+				</div>
+			</div> -->
+		</div>
 	</div>
-
-	<div id="quote">
-		The Quote
+	<div class="row text-center">
+		<h1>3:00pm</h1>
+		<h1>
+			This is going to be the Clock and the Welcome Message
+		</h1>
 	</div>
+	<div class="row text-center footer">
+		<div class="col-xs-8">
+			<div id="quote">
 
-	<div id="todo">
-		<form onsubmit=""></form>
-		A Todo List
+				<!-- <div class="col-xs-12">
+			<div>Quote</div>
+			<div>- Author</div>
+		</div> -->
+			</div>
+		</div>
+		<div>
+			<h4>A Todo List</h4>
+			<button id="todo-show-button" class="btn btn-info" onclick="app.controllers.todoController.showAddTodoForm()">Add Todo</button>
+		</div>
+		<div class="col-xs-4 hidden" id="add-todo-form">
+			<form class="form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+				<div class="form-group">
+					<input type="text" name="todo" class="form" placeholder="  Add a ToDo for the Day" required>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success" type="submit">Add</button>
+				</div>
+			</form>
+		</div>
+		<div id="todo">
+			
+			<!-- <div class="checkbox">
+				<label>
+					<input type="checkbox" value="">Todo#1</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="">Todo#1</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="">Todo#1</label>
+			</div> -->
+		</div>
+	</div>
 	</div>
 
 
