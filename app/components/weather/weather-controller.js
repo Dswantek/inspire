@@ -14,10 +14,9 @@ function WeatherController(){
 
 	function drawWeather(weather){
 		var	template = `
-			<div class="col-xs-2">
 				<div class="row">
 					<div class="col-xs-12">
-						<p>${weather.temp}°F</p>
+						<h3>${weather.temp}°F</h3>
 					</div>
 				</div>
 				<div class="row">
@@ -30,7 +29,7 @@ function WeatherController(){
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<p> Picture of Weather (clouds, sunny, rain, etc)</p>
+
 					</div>
 				</div>
 				<div class="row">

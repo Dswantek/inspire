@@ -13,7 +13,7 @@ function WeatherService() {
 					temp: Math.round(res.main.temp * 9/5 - 459.67),
 					low: Math.round(res.main.temp_min * 9/5 - 459.67),
 					high: Math.round(res.main.temp_max * 9/5 - 459.67),
-					city: res.name
+					city: res.name,
 					// picture: res.weather.main
 				};
 	

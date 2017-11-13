@@ -4,9 +4,42 @@ body {
     justify-content: center;
 }
 
-#weather{
-    background-color: rgba(0, 0, 0, .30);
+/* #header{
+    background-color: rgba(6, 2, 250, 0.5);
     color: rgba(255, 255, 255, 1);
     position: relative;
+    height: auto;
+    justify-content: center;
+} */
 
+#weather{
+    background-color: rgba(0, 0, 0, 0.70);
+    color: rgba(255, 255, 255, 1);
+    position: relative;
+}
+
+#quote{
+    background-color: rgba(0, 0, 0, 0.70);
+    color: rgba(255, 255, 255, 1);
+    position: relative;
+    height: auto;
+    justify-content: center;
+}
+
+#add-todo-form{
+    background-color: rgba(0, 0, 0, 0.70);
+    color: rgba(255, 255, 255, 1);
+    position: relative;
+    height: auto;
+    width: auto;
+
+}
+
+#time{
+    background-color: rgba(0, 0, 0, 0.50);
+    color: rgba(255, 255, 255, 1);
+    position: relative;
+    Margin: 250px;
+    height: auto;
+    justify-content: center;
 }

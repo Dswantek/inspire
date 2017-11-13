@@ -10,7 +10,6 @@ function TodoService() {
 	}
 
 	this.getTodos = function (draw) {
-		debugger
 		$.get(baseUrl)
 		.then(function (res) { // <-- WHY IS THIS IMPORTANT????
 			console.log(res)
@@ -20,49 +19,59 @@ function TodoService() {
 			.fail(logError)
 	}
 
-	this.addTodo = function (todo) {
+	this.addTodo = function (todo, getTodos) {
 		// WHAT IS THIS FOR???
 		console.log(todo)
 		$.post(baseUrl, todo)
-			.then(function (res) { // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				console.log(res)
-				todoList = res;
-				draw(res)
-			})
+			.then(getTodos) // <-- WHAT DO YOU DO AFTER CREATING A NEW TODO?
+	
 			.fail(logError)
 	}
 
 
 
-	this.toggleTodoStatus = function (todo) {
+	this.toggleTodoStatus = function (todoIndex, getTodos) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
-		var index = todoList.indexOf(todo);
+
+		// var index = todoList.indexOf(todo);
+
+		var todo = todoList[todoIndex]
 
 		//STEP 2: Change the completed flag to the opposite of what it is **HINT** todo.completed = !todo.completed
+		
+		// if(todo.completed == true){
+		// 	todo.completed = false
+		// }else{
+		// 	todo.completed = true
+		// }
 
+		todo.completed = !todo.completed
 
 		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
 		$.ajax({
 			method: 'PUT',
 			contentType: 'application/json',
-			url: baseUrl + '/' + todo,
-			data: JSON.stringify(index)
+			url: baseUrl + '/' + todoIndex,
+			data: JSON.stringify(todo)
 		})
-			.then(function (res) {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
-				draw(res)
+			.then(function(){
+				getTodos()
 			})
+				//DO YOU WANT TO DO ANYTHING WITH THIS?
 			.fail(logError)
 	}
 
-	this.removeTodo = function (todo) {
+	this.removeTodo = function (todo, getTodos) {
 		// Umm this one is on you to write.... It's also unique, like the ajax call above. The method is a DELETE
-		$.delete(baseUrl, todo)
-			.then(function (res) {
-				console.log(res)
-				draw(res)
-			})
+		var index = todoList.indexOf(todo)
+		
+		$.ajax({
+			method: 'DELETE',
+			url: baseUrl + '/' + todo,
+			data: JSON.stringify(index)
+		})
+			.then(getTodos)
 			.fail(logError)
 	}
 
