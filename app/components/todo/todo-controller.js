@@ -45,13 +45,13 @@ function TodoController() {
 		
 		todosFormElem.classList.toggle('hidden', true)
 
-		showAddTodoForm()
 
 		//PASSES THE NEW TODO TO YOUR SERVICE
 		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
 		//YOU SHOULDN'T NEED TO CHANGE THIS
 		todoService.addTodo(todo, getTodos)
-		                         //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+								 //^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+		todoService.getTodos(draw)
 	}
 
 	this.toggleTodoStatus = function (todo) {
@@ -68,7 +68,7 @@ function TodoController() {
 
 	// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
 
-	var formstate = false
+	var formstate = true
 
 	this.showAddTodoForm = function showAddTodoForm() {
         if (formstate) {
@@ -82,10 +82,10 @@ function TodoController() {
             todosFormElem.classList.remove('hidden')
             formstate = true
         }
-    }
+	}
 
 
-	draw()
+	getTodos()
 
 
 }
