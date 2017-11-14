@@ -21,17 +21,20 @@ function TodoController() {
 	function draw(todoList) {
 		//WHAT IS MY PURPOSE?
 		//BUILD YOUR TODO TEMPLATE HERE
+		var count = 0
 		var template = ''
 		//DONT FORGET TO LOOP
 		for (var i = 0; i < todoList.length; i++) {
 			var todo = todoList[i]
 			if (todo.completed == true) {
+				count--
 				template += `
 				<div class="checkbox">
 				<label><input checked type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${i})">${todo.description}</label><i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
 				</div>
 				`
 			}else{
+				count++
 				template += `
 				<div class="checkbox">
 					<label><input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus(${i})">${todo.description}</label><i class="glyphicon glyphicon-trash pull-right" onclick="app.controllers.todoController.removeTodo(${i})"></i>
@@ -41,6 +44,7 @@ function TodoController() {
 
 		}
 		document.getElementById('todo').innerHTML = template
+		document.getElementById('counter').innerHTML = count
 	}
 
 
