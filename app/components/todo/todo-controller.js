@@ -26,6 +26,9 @@ function TodoController() {
 		//DONT FORGET TO LOOP
 		for (var i = 0; i < todoList.length; i++) {
 			var todo = todoList[i]
+			if(todo.completed == "false"){
+				todo.completed = false
+			}
 			if (todo.completed == true) {
 				template += `
 				<div class="checkbox">
